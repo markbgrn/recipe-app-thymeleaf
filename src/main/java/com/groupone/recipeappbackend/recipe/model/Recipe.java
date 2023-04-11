@@ -25,10 +25,13 @@ public class Recipe {
     private String title;
     @Column(name = "recipe_photo")
     private String photoUrl;
+    @Lob
     @Column(name = "recipe_ingredients")
     private String ingredients;
+    @Lob
     @Column(name = "recipe_procedure")
     private String procedure;
+    @Lob
     @Column(name = "description")
     private String description;
     @CreationTimestamp
