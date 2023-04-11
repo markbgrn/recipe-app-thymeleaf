@@ -19,7 +19,7 @@
                     <div class="position-relative mb-3">
                         <img class="img-fluid rounded-3 mb-3" th:src="${recipe.photoUrl}" alt="..."/>
                         <a th:text="${recipe.title}" class="h3 fw-bolder text-decoration-none link-dark stretched-link"
-                           href="#!">Project</a>
+                           href="#!">Project name</a>
                     </div>
                     <a class="btn btn-primary" th:href="@{/recipes/{id}/edit(id=${recipe.id})}">Edit</a>
                 </div>
