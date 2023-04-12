@@ -77,4 +77,9 @@ public class RecipeController {
         recipeService.updateRecipe(recipeDto);
         return "redirect:/recipes";
     }
+    @GetMapping("/recipes/{id}/delete")
+    public String deleteRecipe(@PathVariable("id") Long id){
+        recipeService.delete(id);
+        return "redirect:/recipes";
+    }
 }

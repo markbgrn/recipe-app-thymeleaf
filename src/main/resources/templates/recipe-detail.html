@@ -8,82 +8,109 @@
 <body class="d-flex flex-column">
 <!-- Page Content-->
 <section layout:fragment="body">
-    <header class="py-5 bg-light border-bottom mb-4">
-        <div class="container">
-            <div class="text-center my-5">
-                <h1 class="fw-bolder" th:text="*{recipe.title}"></h1>
-                <!--                <p class="lead mb-0" th:text="*{recipe.description}"></p>-->
-            </div>
-        </div>
+    <header class="py-4 bg-light border-bottom mb-2">
+        <!--        <div class="container">-->
+        <!--            <div class="text-center my-5">-->
+        <!--                <h1 class="fw-bolder" th:text="*{recipe.title}"></h1>-->
+        <!--                <p class="lead mb-0" th:text="*{recipe.description}"></p>-->
+        <!--            </div>-->
+        <!--        </div>-->
     </header>
     <div class="container">
         <div class="row">
             <!-- Blog entries-->
             <div class="col-lg-8">
                 <!-- Featured blog post-->
-                <div class="card mb-4">
-                    <a href="#!"><img class="card-img-top" th:src="${recipe.photoUrl}"
-                                      alt="..."/></a>
+                <div class="card mb-5">
+                    <a href="#!">
+                        <img class="card-img-top" th:src="${recipe.photoUrl}" alt="..."/>
+                    </a>
                     <div class="card-body">
-                        <!--                        <div class="small text-muted" th:text="${recipe.createdOn}"></div>-->
-                        <h2 class="card-title" th:text="${recipe.title}"></h2>
-<!--                        <a class="btn btn-danger">Delete</a>-->
+                        <h2 class="card-title" th:text="${recipe.title}" style="text-transform: uppercase"></h2>
+                        <div class="small text-muted" th:text="${recipe.description}"></div>
+                        <!--                        <a class="btn btn-danger">Delete</a>-->
+                    </div>
+
+                </div>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <form role="form" method="post" th:action="@{/recipes/new}" th:object="${recipe}">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="title" class="card-title">Comment</label>
+                                    <textarea
+                                            class="form-control"
+                                            id="ingredients"
+                                            name="ingredients"
+                                            rows="3">
+                                     </textarea>
+                                    <p th:if="${#fields.hasErrors('ingredients')}" class="text-danger"
+                                       th:errors="*{ingredients}"></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h6 class="card-title">dito name at profile pic</h6>
+                        <div class="small text-muted" th:text="${recipe.description}"></div>
                     </div>
                 </div>
                 <!-- Nested row for non-featured blog posts-->
                 <div class="row">
-<!--                    <div class="col-lg-6">-->
-<!--                        &lt;!&ndash; Blog post&ndash;&gt;-->
-<!--                        <div class="card mb-4">-->
-<!--                            <a href="#!"><img class="card-img-top"-->
-<!--                                              src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."/></a>-->
-<!--                            <div class="card-body">-->
-<!--                                <div class="small text-muted">January 1, 2023</div>-->
-<!--                                <h2 class="card-title h4">Post Title</h2>-->
-<!--                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
-<!--                                    Reiciendis aliquid atque, nulla.</p>-->
-<!--                                <a class="btn btn-primary" href="#!">Read more →</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        &lt;!&ndash; Blog post&ndash;&gt;-->
-<!--                        <div class="card mb-4">-->
-<!--                            <a href="#!"><img class="card-img-top"-->
-<!--                                              src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."/></a>-->
-<!--                            <div class="card-body">-->
-<!--                                <div class="small text-muted">January 1, 2023</div>-->
-<!--                                <h2 class="card-title h4">Post Title</h2>-->
-<!--                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
-<!--                                    Reiciendis aliquid atque, nulla.</p>-->
-<!--                                <a class="btn btn-primary" href="#!">Read more →</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-lg-6">-->
-<!--                        &lt;!&ndash; Blog post&ndash;&gt;-->
-<!--                        <div class="card mb-4">-->
-<!--                            <a href="#!"><img class="card-img-top"-->
-<!--                                              src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."/></a>-->
-<!--                            <div class="card-body">-->
-<!--                                <div class="small text-muted">January 1, 2023</div>-->
-<!--                                <h2 class="card-title h4">Post Title</h2>-->
-<!--                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
-<!--                                    Reiciendis aliquid atque, nulla.</p>-->
-<!--                                <a class="btn btn-primary" href="#!">Read more →</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        &lt;!&ndash; Blog post&ndash;&gt;-->
-<!--                        <div class="card mb-4">-->
-<!--                            <a href="#!"><img class="card-img-top"-->
-<!--                                              src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."/></a>-->
-<!--                            <div class="card-body">-->
-<!--                                <div class="small text-muted">January 1, 2023</div>-->
-<!--                                <h2 class="card-title h4">Post Title</h2>-->
-<!--                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
-<!--                                    Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>-->
-<!--                                <a class="btn btn-primary" href="#!">Read more →</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <!--                    <div class="col-lg-6">-->
+                    <!--                        &lt;!&ndash; Blog post&ndash;&gt;-->
+                    <!--                        <div class="card mb-4">-->
+                    <!--                            <a href="#!"><img class="card-img-top"-->
+                    <!--                                              src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."/></a>-->
+                    <!--                            <div class="card-body">-->
+                    <!--                                <div class="small text-muted">January 1, 2023</div>-->
+                    <!--                                <h2 class="card-title h4">Post Title</h2>-->
+                    <!--                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
+                    <!--                                    Reiciendis aliquid atque, nulla.</p>-->
+                    <!--                                <a class="btn btn-primary" href="#!">Read more →</a>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        &lt;!&ndash; Blog post&ndash;&gt;-->
+                    <!--                        <div class="card mb-4">-->
+                    <!--                            <a href="#!"><img class="card-img-top"-->
+                    <!--                                              src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."/></a>-->
+                    <!--                            <div class="card-body">-->
+                    <!--                                <div class="small text-muted">January 1, 2023</div>-->
+                    <!--                                <h2 class="card-title h4">Post Title</h2>-->
+                    <!--                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
+                    <!--                                    Reiciendis aliquid atque, nulla.</p>-->
+                    <!--                                <a class="btn btn-primary" href="#!">Read more →</a>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="col-lg-6">-->
+                    <!--                        &lt;!&ndash; Blog post&ndash;&gt;-->
+                    <!--                        <div class="card mb-4">-->
+                    <!--                            <a href="#!"><img class="card-img-top"-->
+                    <!--                                              src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."/></a>-->
+                    <!--                            <div class="card-body">-->
+                    <!--                                <div class="small text-muted">January 1, 2023</div>-->
+                    <!--                                <h2 class="card-title h4">Post Title</h2>-->
+                    <!--                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
+                    <!--                                    Reiciendis aliquid atque, nulla.</p>-->
+                    <!--                                <a class="btn btn-primary" href="#!">Read more →</a>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        &lt;!&ndash; Blog post&ndash;&gt;-->
+                    <!--                        <div class="card mb-4">-->
+                    <!--                            <a href="#!"><img class="card-img-top"-->
+                    <!--                                              src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."/></a>-->
+                    <!--                            <div class="card-body">-->
+                    <!--                                <div class="small text-muted">January 1, 2023</div>-->
+                    <!--                                <h2 class="card-title h4">Post Title</h2>-->
+                    <!--                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
+                    <!--                                    Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>-->
+                    <!--                                <a class="btn btn-primary" href="#!">Read more →</a>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                 </div>
                 <!-- Pagination-->
                 <nav aria-label="Pagination">

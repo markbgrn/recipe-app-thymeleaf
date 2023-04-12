@@ -48,6 +48,11 @@ public class RecipeServiceImpl implements RecipeService {
         recipeRepository.save(recipe);
     }
 
+    @Override
+    public void delete(Long id) {
+        recipeRepository.deleteById(id);
+    }
+
     private Recipe mapToRecipe(RecipeDto recipe) {
         Recipe recipeDto = Recipe.builder()
                 .id(recipe.getId())
