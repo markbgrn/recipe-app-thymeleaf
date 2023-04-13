@@ -3,8 +3,6 @@ package com.groupone.recipeappbackend.recipe.controller;
 import com.groupone.recipeappbackend.recipe.dto.RecipeDto;
 import com.groupone.recipeappbackend.recipe.model.Recipe;
 import com.groupone.recipeappbackend.recipe.service.RecipeService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.jws.WebParam;
 import javax.validation.Valid;
 import java.util.List;
 

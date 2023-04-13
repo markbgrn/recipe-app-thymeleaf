@@ -37,11 +37,11 @@
                         <form role="form" method="post" th:action="@{/recipes/new}" th:object="${recipe}">
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label for="title" class="card-title">Comment</label>
+                                    <label for="userComment" class="card-title">Comment</label>
                                     <textarea
                                             class="form-control"
-                                            id="ingredients"
-                                            name="ingredients"
+                                            id="userComment"
+                                            name="userComment"
                                             rows="3">
                                      </textarea>
                                     <p th:if="${#fields.hasErrors('ingredients')}" class="text-danger"
