@@ -1,12 +1,10 @@
 package com.groupone.recipeappbackend.recipe.implementation;
 
 import com.groupone.recipeappbackend.recipe.dto.RecipeDto;
+import com.groupone.recipeappbackend.recipe.dto.dtoMapper.RecipeMapper;
 import com.groupone.recipeappbackend.recipe.model.Recipe;
 import com.groupone.recipeappbackend.recipe.repository.RecipeRepository;
 import com.groupone.recipeappbackend.recipe.service.RecipeService;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +25,7 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public List<RecipeDto> findAllRecipes() {
        List<Recipe> recipes = recipeRepository.findAll();
-        return recipes.stream().map((club) -> mapToRecipeDto(club)).collect(Collectors.toList());
+        return recipes.stream().map(RecipeMapper::mapToRecipeDto).collect(Collectors.toList());
     }
 
     @Override
@@ -54,7 +52,7 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     private Recipe mapToRecipe(RecipeDto recipe) {
-        Recipe recipeDto = Recipe.builder()
+        return Recipe.builder()
                 .id(recipe.getId())
                 .title(recipe.getTitle())
                 .photoUrl(recipe.getPhotoUrl())
@@ -64,6 +62,5 @@ public class RecipeServiceImpl implements RecipeService {
                 .createdOn(recipe.getCreatedOn())
                 .updatedOn(recipe.getUpdatedOn())
                 .build();
-        return recipeDto;
     }
 }
