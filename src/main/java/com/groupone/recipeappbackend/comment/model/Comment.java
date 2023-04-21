@@ -15,15 +15,15 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users_comment")
+@Table(name = "comments")
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id")
     private Long id;
-    @Column(name = "comment")
     @Lob
-    private String userComment;
+    @Column(name = "recipe_comment")
+    private String recipeComment;
     @CreationTimestamp
     private LocalDateTime createdOn;
     @UpdateTimestamp
