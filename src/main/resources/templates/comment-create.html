@@ -1,0 +1,30 @@
+<html
+        xmlns:th="http://thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+
+<body>
+<h1>Comments</h1>
+<ul>
+    <li th:each="comment : ${comments}">
+        <div th:text="${comment.getText()}"></div>
+      <!--  <div th:text="${comment.getUser().getUsername()}"></div>-->
+        <!--<img&lt;!&ndash; th:src="${comment.getUser().getProfilePictureThumbnailUrl()}" alt="Profile Picture">&ndash;&gt;-->
+    </li>
+</ul>
+<form th:action="@{/comments}" th:object="${commentDTO}" method="post">
+    <div>
+        <label for="text">Text</label>
+        <input type="text" th:field="*{text}">
+    </div>
+    <div>
+<!--        <label for="first_nameId">User ID</label>
+        <input type="text" th:field="*{first_name}">-->
+    </div>
+    <button type="submit">Submit</button>
+</form>
+</body>
+
+
+
+

@@ -21,9 +21,11 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id")
     private Long id;
-    @Column(name = "comment")
-    @Lob
+    @Column(name = "comment", nullable = false, length = 4000)
     private String userComment;
+/*  @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "first_name")
+    private User user;*/
     @CreationTimestamp
     private LocalDateTime createdOn;
     @UpdateTimestamp
