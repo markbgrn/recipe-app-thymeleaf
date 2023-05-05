@@ -2,7 +2,7 @@
 
 ### Oracle Database Setup
 ```
-ALTER SESSION "_ORACLE_SCRIPT"=true;
+ALTER SESSION SET "_ORACLE_SCRIPT"=true;
 CREATE USER recipe_db IDENTIFIED BY recipedb;
 GRANT CONNECT TO recipe_db;
 GRANT CONNECT, RESOURCE, DBA TO recipe_db;
