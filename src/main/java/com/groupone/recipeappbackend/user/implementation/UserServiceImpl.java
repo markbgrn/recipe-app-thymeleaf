@@ -1,6 +1,7 @@
 package com.groupone.recipeappbackend.user.implementation;
 
 import com.groupone.recipeappbackend.user.dto.UserDto;
+import com.groupone.recipeappbackend.user.helper.PasswordHash;
 import com.groupone.recipeappbackend.user.model.UserModel;
 import com.groupone.recipeappbackend.user.repository.UserRepository;
 import com.groupone.recipeappbackend.user.service.UserService;
@@ -18,6 +19,7 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public UserModel saveUser(UserDto userDto) {
+        userDto.setPassword(PasswordHash.toMd5(userDto.getPassword()));
         return userRepository.save(mapToUser(userDto));
     }
 
@@ -25,7 +27,10 @@ public class UserServiceImpl implements UserService {
         UserModel user = new UserModel();
 
         return UserModel.builder()
+                .firstname(userDto.getFirstname())
+                .lastname(userDto.getLastname())
                 .email(userDto.getEmail())
+                .password(userDto.getPassword())
                 .build();
     }
 }

@@ -15,6 +15,34 @@
             <form role="form" method="post" th:action="@{/user/new}" th:object="${user}">
                 <div class="form-row">
                     <div class="form-group col-md-6">
+                        <label for="firstname">First name</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="firstname"
+                                name="firstname"
+                                th:field="*{firstname}"
+                                placeholder="First name"
+                                maxlength=256>
+                        <p th:if="${#fields.hasErrors('firstname')}" class="text-danger" th:errors="*{firstname}"></p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="lastname">Last name</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="lastname"
+                                name="lastname"
+                                th:field="*{lastname}"
+                                placeholder="Last name"
+                                maxlength=256>
+                        <p th:if="${#fields.hasErrors('lastname')}" class="text-danger" th:errors="*{lastname}"></p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
                         <label for="email">Email</label>
                         <input
                                 type="text"
@@ -27,6 +55,35 @@
                         <p th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></p>
                     </div>
                 </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="password">Password</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="password"
+                                name="password"
+                                th:field="*{password}"
+                                placeholder="Password"
+                                maxlength=256>
+                        <p th:if="${#fields.hasErrors('password')}" class="text-danger" th:errors="*{password}"></p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                th:field="*{confirmPassword}"
+                                placeholder="confirmPassword"
+                                maxlength=256>
+                        <p th:if="${#fields.hasErrors('confirmPassword')}" class="text-danger" th:errors="*{confirmPassword}"></p>
+                    </div>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>

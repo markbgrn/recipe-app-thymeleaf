@@ -14,7 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Builder
-@Table(name = "user")
+@Table(name = "users")
 public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,15 +23,8 @@ public class UserModel {
     private String password;
     private String firstname;
     private String lastname;
-
     @CreationTimestamp
     private LocalDateTime createdOn;
     @UpdateTimestamp
     private LocalDateTime updatedOn;
-    @ManyToMany
-    @JoinTable(
-            name = "user_security_questions",
-            joinColumns = @JoinColumn(name = "user.id"),
-            inverseJoinColumns = @JoinColumn(name = "security_questions.id"))
-    Set<SecurityQuestion> userSecurityQuestions;
 }

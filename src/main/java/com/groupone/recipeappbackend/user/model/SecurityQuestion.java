@@ -16,10 +16,7 @@ public class SecurityQuestion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String question;
-
     public SecurityQuestion(String question) {
         this.question = question;
     }
-    @ManyToMany(mappedBy = "userSecurityQuestions")
-    Set<UserModel> users;
 }
