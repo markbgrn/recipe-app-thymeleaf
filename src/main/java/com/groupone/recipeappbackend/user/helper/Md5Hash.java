@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class PasswordHash {
+public class Md5Hash {
     public static String toMd5(String input)
     {
         try {

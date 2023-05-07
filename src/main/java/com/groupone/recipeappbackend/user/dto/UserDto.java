@@ -1,8 +1,6 @@
 package com.groupone.recipeappbackend.user.dto;
 
 import com.groupone.recipeappbackend.user.dto.validator.PasswordMatch;
-import com.groupone.recipeappbackend.user.helper.PasswordHash;
-import com.groupone.recipeappbackend.user.model.SecurityQuestion;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -10,7 +8,6 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.*;
 
 
@@ -23,18 +20,20 @@ import javax.validation.constraints.*;
 @PasswordMatch(message="Passwords must match")
 public class UserDto {
 
-    @NotBlank
-    @Email
+    @NotBlank(message = "This field should not be blank")
+    @Email(message = "Please enter a valid email address")
     private String email;
-    @NotBlank
-    @Length(min = 8, max = 64)
+    @NotBlank(message = "This field should not be blank")
+    @Length(min = 8, max = 64, message = "Password length should be between 8 and 64 characters")
     private String password;
-    @NotBlank
+    @NotBlank(message = "This field should not be blank")
     private String confirmPassword;
-    @NotBlank
+    @NotBlank(message = "This field should not be blank")
     private String firstname;
-    @NotBlank
+    @NotBlank(message = "This field should not be blank")
     private String lastname;
+    private String verificationId;
+    private Boolean isVerified;
 
 //    @NotBlank
 //    private SecurityQuestion securityQuestion1;

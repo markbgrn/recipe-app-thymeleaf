@@ -1,10 +1,8 @@
 package com.groupone.recipeappbackend.user.service;
 
 import com.groupone.recipeappbackend.user.dto.UserDto;
-import com.groupone.recipeappbackend.user.helper.PasswordHash;
 import com.groupone.recipeappbackend.user.model.UserModel;
 import com.groupone.recipeappbackend.user.repository.UserRepository;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -29,4 +27,6 @@ public class RegistrationService {
             result.addError( new FieldError("user", "email", "Email already registered"));
         }
     }
+
+
 }

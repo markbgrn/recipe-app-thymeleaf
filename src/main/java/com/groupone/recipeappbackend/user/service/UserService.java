@@ -5,4 +5,6 @@ import com.groupone.recipeappbackend.user.model.UserModel;
 
 public interface UserService {
     UserModel saveUser(UserDto userDto);
+    void updateUser(UserDto userDto);
+    void setUserVerified(String verificationId);
 }

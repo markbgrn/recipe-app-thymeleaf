@@ -1,7 +1,7 @@
 package com.groupone.recipeappbackend.user.implementation;
 
 import com.groupone.recipeappbackend.user.dto.UserDto;
-import com.groupone.recipeappbackend.user.helper.PasswordHash;
+import com.groupone.recipeappbackend.user.helper.Md5Hash;
 import com.groupone.recipeappbackend.user.model.UserModel;
 import com.groupone.recipeappbackend.user.repository.UserRepository;
 import com.groupone.recipeappbackend.user.service.UserService;
@@ -19,8 +19,23 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public UserModel saveUser(UserDto userDto) {
-        userDto.setPassword(PasswordHash.toMd5(userDto.getPassword()));
+        userDto.setPassword(Md5Hash.toMd5(userDto.getPassword()));
+        userDto.setVerificationId(Md5Hash.toMd5(userDto.getEmail()));
+        userDto.setIsVerified(false);
         return userRepository.save(mapToUser(userDto));
+    }
+
+    @Override
+    public void updateUser(UserDto userDto) {
+        UserModel user = mapToUser(userDto);
+        userRepository.save(user);
+    }
+
+    @Override
+    public void setUserVerified(String verificationId) {
+        UserModel user = userRepository.findByVerificationId(verificationId);
+        user.setIsVerified(true);
+        userRepository.save(user);
     }
 
     private UserModel mapToUser(UserDto userDto) {
@@ -31,6 +46,8 @@ public class UserServiceImpl implements UserService {
                 .lastname(userDto.getLastname())
                 .email(userDto.getEmail())
                 .password(userDto.getPassword())
+                .verificationId(userDto.getVerificationId())
+                .isVerified(userDto.getIsVerified())
                 .build();
     }
 }
