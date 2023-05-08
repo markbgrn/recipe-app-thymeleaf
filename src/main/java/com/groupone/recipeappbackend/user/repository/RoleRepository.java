@@ -1,6 +1,6 @@
-package com.groupone.recipeappbackend.users.repository;
+package com.groupone.recipeappbackend.user.repository;
 
-import com.groupone.recipeappbackend.users.model.Role;
+import com.groupone.recipeappbackend.user.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {

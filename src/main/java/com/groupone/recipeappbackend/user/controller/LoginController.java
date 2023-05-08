@@ -1,5 +1,5 @@
-package com.groupone.recipeappbackend.users.controller;
-import com.groupone.recipeappbackend.users.dto.LoginFormDto;
+package com.groupone.recipeappbackend.user.controller;
+import com.groupone.recipeappbackend.user.dto.LoginFormDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

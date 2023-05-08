@@ -1,4 +1,4 @@
-package com.groupone.recipeappbackend.users.security;
+package com.groupone.recipeappbackend.user.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,11 +14,11 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    private CustomUsersDetailsService usersDetailsService;
+    private CustomUsersDetailsService userDetailsService;
 
     @Autowired
-    public SecurityConfig(CustomUsersDetailsService usersDetailsService){
-        this.usersDetailsService = usersDetailsService;
+    public SecurityConfig(CustomUsersDetailsService userDetailsService){
+        this.userDetailsService = userDetailsService;
     }
 
     @Bean
@@ -47,6 +47,6 @@ public class SecurityConfig {
     }
 
     public void configure(AuthenticationManagerBuilder builder) throws Exception {
-        builder.userDetailsService(usersDetailsService).passwordEncoder(passwordEncoder());
+        builder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 }

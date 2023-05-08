@@ -1,4 +1,4 @@
-package com.groupone.recipeappbackend.users.model;
+package com.groupone.recipeappbackend.user.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +19,6 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @ManyToMany(mappedBy = "roles")
-    private List<Users> users = new ArrayList<>();
+    @OneToOne(mappedBy = "roles")
+    private UserModel userModel;
 }

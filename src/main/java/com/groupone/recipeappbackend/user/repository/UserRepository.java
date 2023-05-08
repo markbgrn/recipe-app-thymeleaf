@@ -7,7 +7,11 @@ import java.util.List;
 
 
 public interface UserRepository extends JpaRepository<UserModel, Long> {
-    List<UserModel> findByEmail(String email);
 
     UserModel findByVerificationId(String verificationId);
+
+    UserModel findByEmail(String email);
+//    UserModel findByUsername(String username);
+
+    UserModel findFirstByEmail(String email);
 }

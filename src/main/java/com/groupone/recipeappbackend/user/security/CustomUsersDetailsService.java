@@ -1,28 +1,29 @@
-package com.groupone.recipeappbackend.users.security;
+package com.groupone.recipeappbackend.user.security;
 
-import com.groupone.recipeappbackend.users.model.Users;
-import com.groupone.recipeappbackend.users.repository.UsersRepository;
-import com.groupone.recipeappbackend.users.service.UsersDetailsService;
+import com.groupone.recipeappbackend.user.model.UserModel;
+import com.groupone.recipeappbackend.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.stream.Collectors;
 
 @Service
-public class CustomUsersDetailsService implements UsersDetailsService {
-    private UsersRepository usersRepository;
+public class CustomUsersDetailsService implements UserDetailsService {
+    private UserRepository userRepository;
     @Autowired
-    public CustomUsersDetailsService(UsersRepository usersRepository){
-        this.usersRepository = usersRepository;
+    public CustomUsersDetailsService(UserRepository userRepository){
+        this.userRepository = userRepository;
     }
 
 
 
-    public User loadUserByUsername(String username) throws UsernameNotFoundException{
-        Users user = usersRepository.findFirstByUsername(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
+        UserModel user = userRepository.findFirstByEmail(email);
         if (user != null){
             User authUser = new User(
                     user.getEmail(),

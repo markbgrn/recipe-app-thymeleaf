@@ -1,6 +1,5 @@
 package com.groupone.recipeappbackend.user.dto;
 
-import com.groupone.recipeappbackend.user.dto.validator.PasswordMatch;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -17,7 +16,6 @@ import javax.validation.constraints.*;
 @Setter
 @Data
 @Builder
-@PasswordMatch(message="Passwords must match")
 public class UserDto {
 
     @NotBlank(message = "This field should not be blank")

@@ -1,4 +1,4 @@
-package com.groupone.recipeappbackend.users.dto;
+package com.groupone.recipeappbackend.user.dto;
 
 import lombok.Builder;
 import lombok.Data;

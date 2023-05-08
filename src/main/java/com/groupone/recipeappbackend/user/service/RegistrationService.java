@@ -20,10 +20,10 @@ public class RegistrationService {
             result.addError( new FieldError("user", "confirmPassword", "Passwords do not match"));
         }
 
-        List<UserModel> users = userRepository.findByEmail(userDto.getEmail());
-        int size = users.size();
+        UserModel user = userRepository.findByEmail(userDto.getEmail());
+//        int size = users.size();
 
-        if(size > 0) {
+        if(user != null){
             result.addError( new FieldError("user", "email", "Email already registered"));
         }
     }
