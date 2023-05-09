@@ -12,4 +12,8 @@ public interface UserService {
     UserModel loginUser(LoginFormDto loginFormDto);
 
     UserModel findByEmail(String email);
+
+
+
+
 }

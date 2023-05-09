@@ -62,8 +62,8 @@ public class UserServiceImpl implements UserService {
         UserModel user = new UserModel();
 
         return UserModel.builder()
-                .firstname(userDto.getFirstname())
-                .lastname(userDto.getLastname())
+                .firstName(userDto.getFirstname())
+                .lastName(userDto.getLastname())
                 .email(userDto.getEmail())
                 .password(userDto.getPassword())
                 .verificationId(userDto.getVerificationId())

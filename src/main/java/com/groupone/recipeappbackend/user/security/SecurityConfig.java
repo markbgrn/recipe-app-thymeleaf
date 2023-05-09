@@ -33,10 +33,11 @@ public class SecurityConfig {
                 .permitAll()
                 .and()
                 .formLogin(form -> form
-                        .loginPage("/login.html")
+                        .loginPage("/login")
                         .usernameParameter("email")
                         .loginProcessingUrl("/login")
-//                        .failureUrl("/login?error=true")
+                        .defaultSuccessUrl("/recipes")
+                        .failureUrl("/login?error=true")
                         .permitAll()
                 ).logout(
                         logout -> logout
