@@ -8,6 +8,8 @@ import com.groupone.recipeappbackend.user.repository.RoleRepository;
 import com.groupone.recipeappbackend.user.repository.UserRepository;
 import com.groupone.recipeappbackend.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,17 +17,19 @@ public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
     private RoleRepository roleRepository;
+    private PasswordEncoder passwordEncoder;
 
 
     @Autowired
-    public UserServiceImpl(UserRepository usersRepository, RoleRepository roleRepository) {
+    public UserServiceImpl(UserRepository usersRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = usersRepository;
         this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public UserModel saveUser(UserDto userDto) {
-        userDto.setPassword(Md5Hash.toMd5(userDto.getPassword()));
+        userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
         userDto.setVerificationId(Md5Hash.toMd5(userDto.getEmail()));
         userDto.setIsVerified(false);
         return userRepository.save(mapToUser(userDto));
