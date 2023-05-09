@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -33,12 +35,14 @@ public class SecurityConfig {
                 .permitAll()
                 .and()
                 .formLogin(form -> form
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/")
+                        .loginPage("/login.html")
+                        .usernameParameter("email")
                         .loginProcessingUrl("/login")
-//                        .failureUrl("/login?error=true")
+                        .failureUrl("/login?error=true")
                         .permitAll()
-                ).logout(
+                        .defaultSuccessUrl("/home")
+                )
+                .logout(
                         logout -> logout
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()
 
