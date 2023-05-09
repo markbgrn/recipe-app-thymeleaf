@@ -27,9 +27,9 @@ public class UserDto {
     @NotBlank(message = "This field should not be blank")
     private String confirmPassword;
     @NotBlank(message = "This field should not be blank")
-    private String firstname;
+    private String firstName;
     @NotBlank(message = "This field should not be blank")
-    private String lastname;
+    private String lastName;
     private String verificationId;
     private Boolean isVerified;
 
