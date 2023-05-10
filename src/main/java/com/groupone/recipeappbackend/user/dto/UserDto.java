@@ -32,17 +32,4 @@ public class UserDto {
     private String lastName;
     private String verificationId;
     private Boolean isVerified;
-
-//    @NotBlank
-//    private SecurityQuestion securityQuestion1;
-//    @NotBlank
-//    private SecurityQuestion securityQuestion2;
-//    @NotEmpty
-//    private long security_question_1_id;
-//    @NotEmpty
-//    private long security_question_1_answer;
-//    @NotEmpty
-//    private long security_question_2_id;
-//    @NotEmpty
-//    private long security_question_2_answer;
 }
